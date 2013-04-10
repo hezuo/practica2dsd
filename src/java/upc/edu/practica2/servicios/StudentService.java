@@ -13,11 +13,12 @@ public class StudentService {
     List<Student> students = new ArrayList<Student>();
     
     public StudentService() {
-        this.students.add(new Student("1", "Juan", "Perez"));
+        this.students.add(new Student("1", "Juan", "Perez"));        
         this.students.add(new Student("2", "CArlos", "Sanchez"));
         this.students.add(new Student("3", "Pedro", "Suarez"));
         this.students.add(new Student("4", "Mario", "Perez1"));
-        this.students.add(new Student("5", "MArco", "Perez2"));        
+        this.students.add(new Student("5", "MArco", "Ramirez"));        
+        this.students.add(new Student("6", "Juan", "Ramirez"));
     }
     
     public List<Student> getStudents() {
@@ -65,5 +66,20 @@ public class StudentService {
         this.students.add(student);
         
         return this.students;
+    }
+    
+    
+    public List<Student> queryStudent(String nombre, String apellido) {
+        List<Student> qs = new ArrayList<Student>();
+        
+        for (Student st : this.students) {
+            if (nombre != null && st.getApellido().equalsIgnoreCase(apellido)) {
+                qs.add(st);
+            } else if (nombre != null && st.getNombre().equalsIgnoreCase(nombre)) {
+               qs.add(st);
+            }
+        }
+        
+        return qs;
     }
 }
